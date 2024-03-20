@@ -1,19 +1,11 @@
-%  ±¾³ÌĞòÊµÏÖÍ¼ÏñLENAµÄÑ¹Ëõ´«¸Ğ
-%  ³ÌĞò×÷Õß£ºÉ³Íş£¬Ïã¸Û´óÑ§µçÆøµç×Ó¹¤³ÌÑ§Ïµ£¬wsha@eee.hku.hk
-%  Ëã·¨²ÉÓÃÕı½»Æ¥Åä·¨£¬²Î¿¼ÎÄÏ× Joel A. Tropp and Anna C. Gilbert 
-%  Signal Recovery From Random Measurements Via Orthogonal Matching
-%  Pursuit£¬IEEE TRANSACTIONS ON INFORMATION THEORY, VOL. 53, NO. 12,
-%  DECEMBER 2007.
-%  ¸Ã³ÌĞòÃ»ÓĞ¾­¹ıÈÎºÎÓÅ»¯
-
 function Wavelet_OMP
 
 clc;clear
 
-%  ¶ÁÎÄ¼ş
+%  è¯»æ–‡ä»¶
 X=imread('Lena512.bmp');
 % X=X(:,:,1);        %R
-%imwrite(X,'../Wavelet_OMP/walkbridge.bmp','bmp');    %½«Í¼Æ¬ÒÔbmpĞÎÊ½±£´æ  
+%imwrite(X,'../Wavelet_OMP/walkbridge.bmp','bmp');    %å°†å›¾ç‰‡ä»¥bmpå½¢å¼ä¿å­˜  
 
 % I=ind2gray(X,map);
 % figure(2);
@@ -29,19 +21,19 @@ X=double(X);
 [a,b]=size(X);
 %X=ones(a,b);
 
-%  Ğ¡²¨±ä»»¾ØÕóÉú³É
+%  å°æ³¢å˜æ¢çŸ©é˜µç”Ÿæˆ
 ww=DWT(a);
 % wavename='db2';
 % [cA2,cB2,cD2,cE2]=dwt2(X,wavename);
 
 
-%  Ğ¡²¨±ä»»ÈÃÍ¼ÏñÏ¡Êè»¯£¨×¢Òâ¸Ã²½Öè»áºÄ·ÑÊ±¼ä£¬µ«ÊÇ»áÔö´óÏ¡Êè¶È£©
-X1=ww*sparse(X);   %   sparse½«¾ØÕóx×ª»»ÎªÏ¡Êè¾ØÕó£¬¾ØÕóÖĞÈ¥³ıÁãÔªËØ
-X1=full(X1);           %   full °ÑÏ¡Êè¾ØÕó×ª»»³ÉÒ»¸öÈ«¾ØÕó
+%  å°æ³¢å˜æ¢è®©å›¾åƒç¨€ç–åŒ–ï¼ˆæ³¨æ„è¯¥æ­¥éª¤ä¼šè€—è´¹æ—¶é—´ï¼Œä½†æ˜¯ä¼šå¢å¤§ç¨€ç–åº¦ï¼‰
+X1=ww*sparse(X);   %   sparseå°†çŸ©é˜µxè½¬æ¢ä¸ºç¨€ç–çŸ©é˜µï¼ŒçŸ©é˜µä¸­å»é™¤é›¶å…ƒç´ 
+X1=full(X1);           %   full æŠŠç¨€ç–çŸ©é˜µè½¬æ¢æˆä¸€ä¸ªå…¨çŸ©é˜µ
 
-%  Ëæ»ú¾ØÕóÉú³É
+%  éšæœºçŸ©é˜µç”Ÿæˆ
 %  M=256;
-%  R=randn(M,a);    % randnÉú³ÉM*aµÄ±ê×¼ÕıÌ¬·Ö²¼µÄËæ»ú¾ØÕó ²âÁ¿¾ØÕó
+%  R=randn(M,a);    % randnç”ŸæˆM*açš„æ ‡å‡†æ­£æ€åˆ†å¸ƒçš„éšæœºçŸ©é˜µ æµ‹é‡çŸ©é˜µ
 %  [lorenze_x,lorenze_y,lorenze_z]=Lorenz_chaotic_system(0.1234,0.2345,0.3456,a*b);
 %  lorenze_x=lorenze_x(3002:length(lorenze_x));
 %  lorenze_y=lorenze_y(3002:length(lorenze_y)); 
@@ -62,32 +54,32 @@ X1=full(X1);           %   full °ÑÏ¡Êè¾ØÕó×ª»»³ÉÒ»¸öÈ«¾ØÕó
  end
 
  
-% u=3.9999;     %Logistic²ÎÊı¦Ì£¬×Ô¶¨Îª3.99
+% u=3.9999;     %Logisticå‚æ•°Î¼ï¼Œè‡ªå®šä¸º3.99
 % logid=3;
 % c=a;
-% logix=zeros(1,logid*c+1000);        %Ô¤·ÖÅäÄÚ´æ
+% logix=zeros(1,logid*c+1000);        %é¢„åˆ†é…å†…å­˜
 % 
 % logix(1)=0.234;
-% for i=1:logid*c+999                 %½øĞĞSUM+999´ÎÑ­»·£¬¹²µÃµ½SUM+1000µã£¨°üÀ¨³õÖµ£©
+% for i=1:logid*c+999                 %è¿›è¡ŒSUM+999æ¬¡å¾ªç¯ï¼Œå…±å¾—åˆ°SUM+1000ç‚¹ï¼ˆåŒ…æ‹¬åˆå€¼ï¼‰
 %     logix(i+1)=u*logix(i)*(1-logix(i));
 % end
-% logix=logix(1001:logid:length(logix));            %È¥³ıÇ°1000µã£¬»ñµÃ¸üºÃµÄËæ»úĞÔ£¨lengthÊı×é³¤¶È£©
+% logix=logix(1001:logid:length(logix));            %å»é™¤å‰1000ç‚¹ï¼Œè·å¾—æ›´å¥½çš„éšæœºæ€§ï¼ˆlengthæ•°ç»„é•¿åº¦ï¼‰
 % 
 % logiy(1)=0.345;
-% for i=1:logid*c+999                 %½øĞĞSUM+999´ÎÑ­»·£¬¹²µÃµ½SUM+1000µã£¨°üÀ¨³õÖµ£©
+% for i=1:logid*c+999                 %è¿›è¡ŒSUM+999æ¬¡å¾ªç¯ï¼Œå…±å¾—åˆ°SUM+1000ç‚¹ï¼ˆåŒ…æ‹¬åˆå€¼ï¼‰
 %     logiy(i+1)=u*logiy(i)*(1-logiy(i));
 % end
-% logiy=logiy(1001:logid:length(logiy));            %È¥³ıÇ°1000µã£¬»ñµÃ¸üºÃµÄËæ»úĞÔ£¨lengthÊı×é³¤¶È£©
+% logiy=logiy(1001:logid:length(logiy));            %å»é™¤å‰1000ç‚¹ï¼Œè·å¾—æ›´å¥½çš„éšæœºæ€§ï¼ˆlengthæ•°ç»„é•¿åº¦ï¼‰
 % 
-% [~,Ux]=sort(logix,'descend');      %£¨¶Ô¾ØÕó½øĞĞ½µĞòÅÅÁĞ£¬UxÎªÅÅĞòºóÔªËØÔÚÔ­¾ØÕóµÄÁĞÎ»ÖÃ£©
+% [~,Ux]=sort(logix,'descend');      %ï¼ˆå¯¹çŸ©é˜µè¿›è¡Œé™åºæ’åˆ—ï¼ŒUxä¸ºæ’åºåå…ƒç´ åœ¨åŸçŸ©é˜µçš„åˆ—ä½ç½®ï¼‰
 % [~,Uy]=sort(logiy,'descend');  
 % 
-% for i=1:a   %ĞĞÖÃ»»
+% for i=1:a   %è¡Œç½®æ¢
 %     temp = R(i,:);
 %     R(i,:) = R(Ux(i),:);
 %     R(Ux(i),:) = temp;    
 % end
-% for i=1:b   %ÁĞÖÃ»»
+% for i=1:b   %åˆ—ç½®æ¢
 %     temp = R(i,:);
 %     R(i,:) = R(Uy(i),:);
 %     R(Uy(i),:) = temp;    
@@ -114,12 +106,12 @@ X1=full(X1);           %   full °ÑÏ¡Êè¾ØÕó×ª»»³ÉÒ»¸öÈ«¾ØÕó
 % end
 % 
 % 
-% %  ²âÁ¿
+% %  æµ‹é‡
 % Y=R*X1;
 
-%  OMPËã·¨
-X2=zeros(a,b);  %  »Ö¸´¾ØÕó
-for i=1:b  %  ÁĞÑ­»·   
+%  OMPç®—æ³•
+X2=zeros(a,b);  %  æ¢å¤çŸ©é˜µ
+for i=1:b  %  åˆ—å¾ªç¯   
     x0=0.2+0.0001*i;y0=0.2; 
     [heon_x,heon_y]=henon(x0,y0,(512/2)*512-1);
     R=0.08838834756*reshape(heon_y,a/2,b);
@@ -129,52 +121,52 @@ for i=1:b  %  ÁĞÑ­»·
 end
 
 
-%  Ô­Ê¼Í¼Ïñ
+%  åŸå§‹å›¾åƒ
 figure(1);
 imshow(uint8(X));
-title('Ô­Ê¼Í¼Ïñ');
+title('åŸå§‹å›¾åƒ');
 
-%  ±ä»»Í¼Ïñ
+%  å˜æ¢å›¾åƒ
 figure(2);
 imshow(uint8(X1));
-title('Ğ¡²¨±ä»»ºóµÄÍ¼Ïñ');
+title('å°æ³¢å˜æ¢åçš„å›¾åƒ');
 
-%  Ñ¹Ëõ´«¸Ğ»Ö¸´µÄÍ¼Ïñ
+%  å‹ç¼©ä¼ æ„Ÿæ¢å¤çš„å›¾åƒ
 figure(3);
-X3=ww'*sparse(X2);  %  Ğ¡²¨·´±ä»»
+X3=ww'*sparse(X2);  %  å°æ³¢åå˜æ¢
 X3=full(X3);
-subplot(2,2,2);imshow(uint8(X3));title('»Ö¸´µÄÍ¼Ïñ');
+subplot(2,2,2);imshow(uint8(X3));title('æ¢å¤çš„å›¾åƒ');
 
-subplot(2,2,1);imshow(uint8(X));title('Ô­Ê¼µÄÍ¼Ïñ');
+subplot(2,2,1);imshow(uint8(X));title('åŸå§‹çš„å›¾åƒ');
 
-%  Îó²î(PSNR)
-errorx=sum (sum(abs(uint8(X3)-uint8(X)).^2))        %  MSEÎó²î
+%  è¯¯å·®(PSNR)
+errorx=sum (sum(abs(uint8(X3)-uint8(X)).^2))        %  MSEè¯¯å·®
 psnr=10*log10(255*255/(errorx/a/b))   %  PSNR
  
 
-%  OMPµÄº¯Êı
-%  s-²âÁ¿£»T-¹Û²â¾ØÕó£»N-ÏòÁ¿´óĞ¡
+%  OMPçš„å‡½æ•°
+%  s-æµ‹é‡ï¼›T-è§‚æµ‹çŸ©é˜µï¼›N-å‘é‡å¤§å°
 function hat_y=omp(s,T,N)
 
-Size=size(T);                                     %  ¹Û²â¾ØÕó´óĞ¡
-M=Size(1);                                        %  ²âÁ¿
-hat_y=zeros(1,N);                                 %  ´ıÖØ¹¹µÄÆ×Óò(±ä»»Óò)ÏòÁ¿                     
-Aug_t=[];                                         %  ÔöÁ¿¾ØÕó(³õÊ¼ÖµÎª¿Õ¾ØÕó)
-r_n=s;                                            %  ²Ğ²îÖµ
+Size=size(T);                                     %  è§‚æµ‹çŸ©é˜µå¤§å°
+M=Size(1);                                        %  æµ‹é‡
+hat_y=zeros(1,N);                                 %  å¾…é‡æ„çš„è°±åŸŸ(å˜æ¢åŸŸ)å‘é‡                     
+Aug_t=[];                                         %  å¢é‡çŸ©é˜µ(åˆå§‹å€¼ä¸ºç©ºçŸ©é˜µ)
+r_n=s;                                            %  æ®‹å·®å€¼
 
-for times=1:M/4;                                  %  µü´ú´ÎÊı(Ï¡Êè¶ÈÊÇ²âÁ¿µÄ1/4)
-    for col=1:N;                                  %  »Ö¸´¾ØÕóµÄËùÓĞÁĞÏòÁ¿
-        product(col)=abs(T(:,col)'*r_n);          %  »Ö¸´¾ØÕóµÄÁĞÏòÁ¿ºÍ²Ğ²îµÄÍ¶Ó°ÏµÊı(ÄÚ»ıÖµ) 
+for times=1:M/4;                                  %  è¿­ä»£æ¬¡æ•°(ç¨€ç–åº¦æ˜¯æµ‹é‡çš„1/4)
+    for col=1:N;                                  %  æ¢å¤çŸ©é˜µçš„æ‰€æœ‰åˆ—å‘é‡
+        product(col)=abs(T(:,col)'*r_n);          %  æ¢å¤çŸ©é˜µçš„åˆ—å‘é‡å’Œæ®‹å·®çš„æŠ•å½±ç³»æ•°(å†…ç§¯å€¼) 
     end
-    [val,pos]=max(product);                       %  ×î´óÍ¶Ó°ÏµÊı¶ÔÓ¦µÄÎ»ÖÃ
-    Aug_t=[Aug_t,T(:,pos)];                       %  ¾ØÕóÀ©³ä
-    T(:,pos)=zeros(M,1);                          %  Ñ¡ÖĞµÄÁĞÖÃÁã£¨ÊµÖÊÉÏÓ¦¸ÃÈ¥µô£¬ÎªÁË¼òµ¥ÎÒ°ÑËüÖÃÁã£©
-    aug_y=(Aug_t'*Aug_t)^(-1)*Aug_t'*s;           %  ×îĞ¡¶ş³Ë,Ê¹²Ğ²î×îĞ¡
-    r_n=s-Aug_t*aug_y;                            %  ²Ğ²î
-    pos_array(times)=pos;                         %  ¼ÍÂ¼×î´óÍ¶Ó°ÏµÊıµÄÎ»ÖÃ
+    [val,pos]=max(product);                       %  æœ€å¤§æŠ•å½±ç³»æ•°å¯¹åº”çš„ä½ç½®
+    Aug_t=[Aug_t,T(:,pos)];                       %  çŸ©é˜µæ‰©å……
+    T(:,pos)=zeros(M,1);                          %  é€‰ä¸­çš„åˆ—ç½®é›¶ï¼ˆå®è´¨ä¸Šåº”è¯¥å»æ‰ï¼Œä¸ºäº†ç®€å•æˆ‘æŠŠå®ƒç½®é›¶ï¼‰
+    aug_y=(Aug_t'*Aug_t)^(-1)*Aug_t'*s;           %  æœ€å°äºŒä¹˜,ä½¿æ®‹å·®æœ€å°
+    r_n=s-Aug_t*aug_y;                            %  æ®‹å·®
+    pos_array(times)=pos;                         %  çºªå½•æœ€å¤§æŠ•å½±ç³»æ•°çš„ä½ç½®
     
-    if (norm(r_n)<2)                              %  ²Ğ²î×ã¹»Ğ¡  2·¶Êı
+    if (norm(r_n)<2)                              %  æ®‹å·®è¶³å¤Ÿå°  2èŒƒæ•°
         break;
     end
 end
-hat_y(pos_array)=aug_y;                           %  ÖØ¹¹µÄÏòÁ¿
+hat_y(pos_array)=aug_y;                           %  é‡æ„çš„å‘é‡
